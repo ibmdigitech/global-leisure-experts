@@ -1,7 +1,5 @@
 import { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gle.ae';
-
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Global Leisure Experts LLC',

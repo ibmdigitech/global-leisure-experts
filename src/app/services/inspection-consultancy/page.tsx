@@ -2,7 +2,6 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { SectionHeading } from '@/components/SectionHeading';
 import { CTASection } from '@/components/CTASection';
 import { services, Service } from '@/data/services';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
@@ -98,3 +97,4 @@ export default function InspectionConsultancyPage() {
     </>
   );
 }
+

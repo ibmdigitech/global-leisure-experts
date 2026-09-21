@@ -16,12 +16,14 @@ export function ImageWithFallback({ src, fallbackSrc, alt = '', className = '' }
   return (
     <>
       {hasError && fallbackSrc ? (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={fallbackSrc}
           alt={alt}
           className={className}
         />
       ) : (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={imgSrc}
           alt={alt}

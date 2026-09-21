@@ -21,6 +21,16 @@ export const footerNavigation = {
     { label: 'Inspection Consultancy', href: '/services/inspection-consultancy' },
     { label: 'Industrial Trading', href: '/services/industrial-trading' },
   ],
+  industries: [
+    { label: 'Oil & Gas', href: '/industries' },
+    { label: 'Manufacturing', href: '/industries' },
+    { label: 'Construction', href: '/industries' },
+    { label: 'Energy', href: '/industries' },
+    { label: 'Utilities', href: '/industries' },
+    { label: 'Marine', href: '/industries' },
+    { label: 'Industrial Facilities', href: '/industries' },
+    { label: 'Logistics', href: '/industries' },
+  ],
   resources: [
     { label: 'Company Profile', href: '/resources/company-profile' },
     { label: 'Articles', href: '/resources/articles' },
