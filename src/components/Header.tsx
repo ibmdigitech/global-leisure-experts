@@ -8,7 +8,11 @@ import { navigation } from '@/data/navigation';
 import { company } from '@/data/company';
 import Link from 'next/link';
 
-export function Header() {
+interface HeaderProps {
+  transparent?: boolean;
+}
+
+export function Header({ transparent = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -31,27 +35,29 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  const isTransparent = transparent && !isScrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-border'
-          : 'bg-transparent'
+        isTransparent
+          ? 'bg-transparent'
+          : 'bg-white/90 backdrop-blur-md shadow-sm border-b border-border'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 lg:h-20 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <Logo className={`h-8 w-auto ${isScrolled ? 'text-deep-navy' : 'text-white'}`} />
+            <Logo className={`h-8 w-auto ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-8 relative z-50" aria-label="Main navigation">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-technical-teal ${
-                  isScrolled ? 'text-primary-text' : 'text-white/90'
+                className={`text-sm font-medium transition-colors hover:text-technical-teal relative ${
+                  isTransparent ? 'text-white/90' : 'text-primary-text'
                 }`}
               >
                 {item.label}
@@ -76,9 +82,9 @@ export function Header() {
             aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
-              <X className={`h-6 w-6 ${isScrolled ? 'text-primary-text' : 'text-white'}`} />
+              <X className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-primary-text'}`} />
             ) : (
-              <Menu className={`h-6 w-6 ${isScrolled ? 'text-primary-text' : 'text-white'}`} />
+              <Menu className={`h-6 w-6 ${isTransparent ? 'text-white' : 'text-primary-text'}`} />
             )}
           </button>
         </div>
