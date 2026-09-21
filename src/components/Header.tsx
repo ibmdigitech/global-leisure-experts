@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 export function Header({ transparent = false }: HeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => (typeof window !== 'undefined' ? window.scrollY > 50 : false));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -49,7 +49,10 @@ export function Header({ transparent = false }: HeaderProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 lg:h-20 items-center justify-between">
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <Logo className={`h-8 w-auto transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+              <Logo
+                className={`h-8 w-auto transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`}
+                logoColor={isTransparent ? '#ffffff' : '#071A2B'}
+              />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
@@ -83,9 +86,9 @@ export function Header({ transparent = false }: HeaderProps) {
               aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-              <X className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
-            ) : (
-              <Menu className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+                <X className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+              ) : (
+                <Menu className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
               )}
             </button>
           </div>
