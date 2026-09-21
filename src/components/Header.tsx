@@ -39,7 +39,7 @@ export function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
         isTransparent
           ? 'bg-transparent'
           : 'bg-white/90 backdrop-blur-md shadow-sm border-b border-border'
@@ -47,20 +47,23 @@ export function Header({ transparent = false }: HeaderProps) {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 lg:h-20 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0 pointer-events-auto">
             <Logo className={`h-8 w-auto ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 relative z-50" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-8 relative z-50 pointer-events-none" aria-label="Main navigation">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-technical-teal relative ${
+                className={`text-sm font-medium transition-colors hover:text-technical-teal relative pointer-events-auto ${
                   isTransparent ? 'text-white/90' : 'text-primary-text'
                 }`}
               >
-                {item.label}
+                <span className="relative">
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-technical-teal transition-all duration-300 group-hover:w-full hover:w-full" />
+                </span>
               </Link>
             ))}
           </nav>
@@ -68,7 +71,7 @@ export function Header({ transparent = false }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/request-inspection"
-              className="inline-flex items-center justify-center rounded-full bg-technical-teal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-industrial-blue"
+              className="inline-flex items-center justify-center rounded-full bg-technical-teal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-industrial-blue pointer-events-auto"
             >
               {company.primaryCTA}
             </Link>
@@ -76,7 +79,7 @@ export function Header({ transparent = false }: HeaderProps) {
 
           <button
             type="button"
-            className="lg:hidden p-2 -mr-2"
+            className="lg:hidden p-2 -mr-2 pointer-events-auto"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
