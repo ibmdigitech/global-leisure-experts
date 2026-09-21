@@ -296,3 +296,35 @@ public/images/
 ```
 
 Reference from components using Next.js `<Image>` or CSS `background-image`.
+
+---
+
+# QUICK IMAGE SOURCING
+
+If you need immediate images, use these Unsplash search terms to find suitable industrial engineering photography that matches the prompt intent:
+
+- Industrial inspection engineer: `industrial inspection engineer UAE`
+- Technical testing lab: `technical testing engineering`
+- Industrial trading/supply: `industrial equipment warehouse`
+- Industrial machinery: `industrial plant machinery`
+
+Unsplash source examples:
+- https://unsplash.com/s/photos/industrial-inspection
+- https://unsplash.com/s/photos/engineering
+- https://unsplash.com/s/photos/factory
+- https://unsplash.com/s/photos/technical-testing
+
+When selecting images:
+- Prefer darker, cinematic compositions
+- Avoid images with visible text, logos, or watermarks
+- Check licensing for commercial use
+- Prefer images with engineers wearing PPE
+- Choose images with deep navy/blue/steel color tones
+
+Download and save to `public/images/` with the filenames listed above.
+
+---
+
+# FALLBACK BEHAVIOR
+
+Components using these images include client-side fallbacks. If an image is missing or fails to load, the component will automatically hide the broken image and show the gradient placeholder instead.
