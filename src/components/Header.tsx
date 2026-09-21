@@ -13,16 +13,7 @@ interface HeaderProps {
 }
 
 export function Header({ transparent = false }: HeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(() => (typeof window !== 'undefined' ? window.scrollY > 50 : false));
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -35,24 +26,13 @@ export function Header({ transparent = false }: HeaderProps) {
     };
   }, [isMobileMenuOpen]);
 
-  const isTransparent = transparent && !isScrolled;
-
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-          isTransparent
-            ? 'bg-transparent'
-            : 'bg-white shadow-sm border-b border-border'
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-[60] bg-deep-navy/90 backdrop-blur-md shadow-sm border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 lg:h-20 items-center justify-between">
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <Logo
-                className={`h-8 w-auto transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`}
-                logoColor={isTransparent ? '#ffffff' : '#071A2B'}
-              />
+              <Logo className="h-8 w-auto text-white" logoColor="#ffffff" />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
@@ -60,9 +40,7 @@ export function Header({ transparent = false }: HeaderProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-technical-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-technical-teal focus-visible:ring-offset-2 rounded ${
-                    isTransparent ? 'text-white/90 drop-shadow-md' : 'text-deep-navy'
-                  }`}
+                  className="text-sm font-medium transition-colors hover:text-technical-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-technical-teal focus-visible:ring-offset-2 rounded text-white/90"
                 >
                   {item.label}
                 </Link>
@@ -86,9 +64,9 @@ export function Header({ transparent = false }: HeaderProps) {
               aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-                <X className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+                <X className="h-6 w-6 text-white" />
               ) : (
-                <Menu className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+                <Menu className="h-6 w-6 text-white" />
               )}
             </button>
           </div>
