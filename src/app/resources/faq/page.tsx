@@ -3,8 +3,10 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { SectionHeading } from '@/components/SectionHeading';
 import { FAQAccordion } from '@/components/FAQAccordion';
+import { faqPageJsonLd } from '@/lib/structured-data';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { faqs } from '@/data/faqs';
 
 export const metadata = {
   title: 'FAQ | Global Leisure Experts LLC',
@@ -12,6 +14,8 @@ export const metadata = {
 };
 
 export default function FAQPage() {
+  const jsonLd = faqPageJsonLd(faqs);
+
   return (
     <>
       <Header />
@@ -37,6 +41,11 @@ export default function FAQPage() {
       </main>
 
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

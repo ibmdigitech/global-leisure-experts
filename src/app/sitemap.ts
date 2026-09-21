@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { services } from '@/data/services';
 import { products } from '@/data/products';
+import { articles } from '@/data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gle.ae';
@@ -29,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
   }));
 
+  const articlePages = articles.map((article) => ({
+    url: `${baseUrl}/resources/articles/${article.slug}`,
+    priority: 0.6 as const,
+    changeFrequency: 'monthly' as const,
+  }));
+
   const resourcePages = [
     { url: `${baseUrl}/resources/company-profile`, priority: 0.6, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/resources/articles`, priority: 0.6, changeFrequency: 'weekly' as const },
@@ -40,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...productPages,
     ...resourcePages,
+    ...articlePages,
     {
       url: `${baseUrl}/privacy-policy`,
       priority: 0.3,
