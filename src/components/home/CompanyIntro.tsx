@@ -1,10 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { company } from '@/data/company';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export function CompanyIntro() {
   return (
@@ -13,12 +13,16 @@ export function CompanyIntro() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <ScrollReveal>
             <div className="aspect-[4/3] bg-gradient-to-br from-deep-navy to-industrial-blue rounded-3xl relative overflow-hidden">
+              <ImageWithFallback
+                src="/images/gle-about-engineer.webp"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-80"
+              />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="h-24 w-24 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
                     <svg className="h-12 w-12 text-technical-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1-3.03a1.5 1.5 0 01-.8-1.32v-6.12a1.5 1.5 0 011.5-1.5h13.2a1.5 1.5 0 011.5 1.5v6.12a1.5 1.5 0 01-.8 1.32l-5.1 3.03a1.5 1.5 0 01-1.34.03z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 13.5l3.75-2.25M12 18.75l-3.75 2.25" />
                     </svg>
                   </div>
                   <p className="text-white/60 text-sm">Industrial Engineering</p>

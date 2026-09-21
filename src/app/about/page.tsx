@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { CTASection } from '@/components/CTASection';
 import { company } from '@/data/company';
 import { licensedActivities } from '@/data/company';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export const metadata = {
   title: 'About Us | Global Leisure Experts LLC',
@@ -29,6 +30,11 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-12 mt-12">
               <ScrollReveal>
                 <div className="aspect-[4/3] bg-gradient-to-br from-deep-navy to-industrial-blue rounded-3xl relative overflow-hidden">
+                  <ImageWithFallback
+                    src="/images/gle-about-engineer.webp"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover opacity-80"
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="h-24 w-24 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">

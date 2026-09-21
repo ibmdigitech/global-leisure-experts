@@ -2,11 +2,13 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { SectionHeading } from '@/components/SectionHeading';
 import { CTASection } from '@/components/CTASection';
 import { services, Service } from '@/data/services';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 const service = services.find((s) => s.id === 'testing');
 
@@ -68,6 +70,11 @@ export default function TechnicalTestingAnalysisPage() {
 
               <ScrollReveal delay={0.2}>
                 <div className="aspect-[4/3] bg-gradient-to-br from-deep-navy to-industrial-blue rounded-3xl relative overflow-hidden">
+                  <ImageWithFallback
+                    src="/images/technical-testing-analysis.webp"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover opacity-80"
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <div className="h-24 w-24 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
@@ -91,4 +98,3 @@ export default function TechnicalTestingAnalysisPage() {
     </>
   );
 }
-

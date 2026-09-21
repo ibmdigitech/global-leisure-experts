@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { company } from '@/data/company';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 import Link from 'next/link';
 
 export function Hero() {
@@ -15,6 +16,12 @@ export function Hero() {
         }} />
         <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/80 via-transparent to-deep-navy/40" />
       </div>
+
+      <ImageWithFallback
+        src="/images/gle-hero-industrial-inspection.webp"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover opacity-60"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
