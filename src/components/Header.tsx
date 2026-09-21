@@ -43,7 +43,7 @@ export function Header({ transparent = false }: HeaderProps) {
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
           isTransparent
             ? 'bg-transparent'
-            : 'bg-white/90 backdrop-blur-md shadow-sm border-b border-border'
+            : 'bg-white shadow-sm border-b border-border'
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -58,7 +58,7 @@ export function Header({ transparent = false }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   className={`text-sm font-medium transition-colors hover:text-technical-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-technical-teal focus-visible:ring-offset-2 rounded ${
-                    isTransparent ? 'text-white/90 drop-shadow-md' : 'text-primary-text'
+                    isTransparent ? 'text-white/90 drop-shadow-md' : 'text-deep-navy'
                   }`}
                 >
                   {item.label}
@@ -83,9 +83,9 @@ export function Header({ transparent = false }: HeaderProps) {
               aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-                <X className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-primary-text'}`} />
-              ) : (
-                <Menu className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-primary-text'}`} />
+              <X className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
+            ) : (
+              <Menu className={`h-6 w-6 transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-deep-navy'}`} />
               )}
             </button>
           </div>

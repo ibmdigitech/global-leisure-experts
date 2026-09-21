@@ -174,6 +174,7 @@ export default function Home() {
               title="Precision Behind Every Technical Decision"
               description="Five principles that guide our approach to industrial inspection and technical services."
               align="left"
+              inverse
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mt-12">
               {[

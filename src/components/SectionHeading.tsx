@@ -7,10 +7,14 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   align?: 'left' | 'center';
+  inverse?: boolean;
   className?: string;
 }
 
-export function SectionHeading({ eyebrow, title, description, align = 'center', className = '' }: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, description, align = 'center', inverse = false, className = '' }: SectionHeadingProps) {
+  const textColor = inverse ? 'text-white' : 'text-deep-navy';
+  const descriptionColor = inverse ? 'text-white/70' : 'text-secondary-text';
+
   return (
     <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : 'text-left'} ${className}`}>
       {eyebrow && (
@@ -29,7 +33,7 @@ export function SectionHeading({ eyebrow, title, description, align = 'center', 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-deep-navy mb-6"
+        className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight ${textColor} mb-6`}
       >
         {title}
       </motion.h2>
@@ -39,7 +43,7 @@ export function SectionHeading({ eyebrow, title, description, align = 'center', 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg text-secondary-text leading-relaxed"
+          className={`text-lg ${descriptionColor} leading-relaxed`}
         >
           {description}
         </motion.p>
